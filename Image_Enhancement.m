@@ -1,0 +1,11 @@
+I = imread('3Perfect.jpg');
+subplot(1,3,1);imshow(I);title('Brain MRI Image');
+handles.ImgData = I;
+X = handles.ImgData;
+gray = rgb2gray(X);
+level = graythresh(X);
+img = imbinarize(gray,.6);
+img = bwareaopen(img,80); 
+subplot(1,3,2);imshow(img);title('Tumor Enhanced');
+Y=imfuse(I,img);
+subplot(1,3,3);imshow(Y);title('Enhanced MRI');
